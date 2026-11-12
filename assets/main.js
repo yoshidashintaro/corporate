@@ -16,7 +16,7 @@
     shogai: { name: "障がい福祉", color: "var(--biz-shogai)" },
   };
 
-  /* ---------------- 拠点（現行サイト掲載の施設名より。所在地は名称・沿革からの推定＝要確認） ---------------- */
+  /* ---------------- 拠り所（現行サイト掲載の施設名より。所在地は名称・沿革からの推定＝要確認） ---------------- */
   const CITIES = {
     umeda:        { name: "大阪市北区（梅田）", pref: "大阪府", lon: 135.498, lat: 34.700, nx: 0, ny: -6, lx: 20, ly: -4, anchor: "start", hq: true },
     shinsaibashi: { name: "大阪市中央区（心斎橋）", pref: "大阪府", lon: 135.501, lat: 34.673, nx: 6, ny: 8, lx: 18, ly: 4, anchor: "start" },
@@ -92,7 +92,7 @@
   document.body.insertAdjacentHTML("afterbegin", `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="wc" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="22"/></filter></svg>`);
 
   /* ---------------- Header / Drawer ---------------- */
-  const corpNav = [["about.html", "EMIFULLについて", "ABOUT"], ["business.html", "事業案内", "BUSINESS"], ["business.html#locations", "拠点一覧", "LOCATIONS"], ["index.html#news", "お知らせ", "NEWS"]];
+  const corpNav = [["about.html", "EMIFULLについて", "ABOUT"], ["business.html", "事業案内", "BUSINESS"], ["business.html#locations", "グループマップ", "GROUP MAP"], ["index.html#news", "お知らせ", "NEWS"]];
   const recNav = [["recruit.html#people", "人を知る", "PEOPLE"], ["recruit.html#work", "仕事を知る", "WORK"], ["recruit.html#system", "制度・働く環境", "SYSTEM"], ["jobs.html", "求人を探す", "JOBS"], ["recruit.html#faq", "採用Q&A", "FAQ"]];
   const nav = isRecruit ? recNav : corpNav;
   const header = $("#site-header");
@@ -100,7 +100,7 @@
   const CORP_MENU = [
     { label: "EMIFULL<br>について", text: "EMIFULLについて", href: "about.html", en: "ABOUT", child: [["about.html#message", "理事長メッセージ"], ["about.html#pmvv", "理念（PMVV）"], ["about.html#outline", "法人概要"], ["about.html#history", "沿革"], ["about.html#access", "本部アクセス"]] },
     { label: "事業<br>案内", text: "事業案内", href: "business.html", en: "BUSINESS", child: [["business.html#gairai", "外来・入院"], ["business.html#biyou", "美容医療"], ["business.html#zaitaku", "在宅医療"], ["business.html#kaigo", "介護"], ["business.html#shogai", "障がい福祉"]] },
-    { label: "拠点<br>一覧", text: "拠点一覧", href: "business.html#locations", en: "LOCATIONS", child: [["business.html#locations", "関西の拠点マップ"], ["facility.html", "施設詳細（例）"]] },
+    { label: "グループ<br>マップ", text: "グループマップ", href: "business.html#locations", en: "GROUP MAP", child: [["business.html#locations", "関西のグループマップ"], ["facility.html", "施設詳細（例）"]] },
     { label: "お知らせ", text: "お知らせ", href: "index.html#news", en: "NEWS" },
   ];
   const ICON = {
@@ -121,7 +121,7 @@
             : `<li><a class="ch__item" href="${m.href}">${m.label}</a></li>`).join("")}
         </ul></nav>
         <div class="ch__btns">
-          <a class="ch__btn is-pc" href="business.html#locations">${ICON.pin}拠点マップ</a>
+          <a class="ch__btn is-pc" href="business.html#locations">${ICON.pin}グループマップ</a>
           <a class="ch__btn is-pc" href="contact.html">${ICON.mail}お問い合わせ</a>
           <a class="ch__btn ch__btn--recruit" href="recruit.html">${ICON.recruit}採用情報</a>
           <button class="ch__menu menu-btn" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="drawer"><span class="bar"></span><span class="bar"></span><span class="lbl">MENU</span></button>
@@ -192,7 +192,7 @@
           </div>
           <nav class="foot-cols" aria-label="サイトマップ">
             <div><h4>Corporate</h4><ul><li><a href="index.html">TOP</a></li><li><a href="about.html">EMIFULLについて</a></li><li><a href="about.html#message">理事長メッセージ</a></li><li><a href="about.html#outline">法人概要・沿革</a></li><li><a href="index.html#news">お知らせ</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></div>
-            <div><h4>Business</h4><ul><li><a href="business.html#gairai">外来・入院</a></li><li><a href="business.html#biyou">美容医療</a></li><li><a href="business.html#zaitaku">在宅医療</a></li><li><a href="business.html#kaigo">介護</a></li><li><a href="business.html#shogai">障がい福祉</a></li><li><a href="business.html#locations">拠点一覧</a></li></ul></div>
+            <div><h4>Business</h4><ul><li><a href="business.html#gairai">外来・入院</a></li><li><a href="business.html#biyou">美容医療</a></li><li><a href="business.html#zaitaku">在宅医療</a></li><li><a href="business.html#kaigo">介護</a></li><li><a href="business.html#shogai">障がい福祉</a></li><li><a href="business.html#locations">グループマップ</a></li></ul></div>
             <div><h4>Recruit</h4><ul><li><a href="recruit.html">採用情報</a></li><li><a href="recruit.html#work">部門・職種紹介</a></li><li><a href="interview.html">スタッフインタビュー</a></li><li><a href="recruit.html#system">成長できる環境</a></li><li><a href="recruit.html#system">選べる働き方</a></li><li><a href="recruit.html#faq">採用Q&amp;A</a></li></ul></div>
           </nav>
         </div>
@@ -220,7 +220,7 @@
   }
 
   /* ---------------- Mock bar ---------------- */
-  const pages = [["grp", "法人サイト"], ["index.html", "法人TOP"], ["about.html", "EMIFULLについて（理事長・PMVV・概要）"], ["business.html", "事業案内・拠点マップ"], ["facility.html", "施設詳細"], ["contact.html", "お問い合わせ"],
+  const pages = [["grp", "法人サイト"], ["index.html", "法人TOP"], ["about.html", "EMIFULLについて（理事長・PMVV・概要）"], ["business.html", "事業案内・グループマップ"], ["facility.html", "施設詳細"], ["contact.html", "お問い合わせ"],
     ["grp", "採用サイト"], ["recruit.html", "採用TOP"], ["jobs.html", "求人一覧（検索）"], ["job.html?id=j01", "求人詳細"], ["interview.html", "職員インタビュー"]];
   const bar = document.createElement("div");
   bar.className = "mock-bar";
@@ -298,7 +298,7 @@
     setTimeout(() => { mv.classList.add("is-animated"); openLens(); }, 60);
   });
 
-  /* ---------------- 関西拠点マップ ---------------- */
+  /* ---------------- 関西グループマップ ---------------- */
   const X = (lon) => (lon - 134.74) * 500;
   const Y = (lat) => (34.92 - lat) * 610;
   const pts = (arr) => arr.map(([lo, la]) => `${X(lo).toFixed(1)},${Y(la).toFixed(1)}`).join(" ");
@@ -333,11 +333,11 @@
         const ring = bizs.map((b, i) => { const a0 = (i / bizs.length) * Math.PI * 2 - Math.PI / 2, a1 = ((i + 1) / bizs.length) * Math.PI * 2 - Math.PI / 2, R = r + 3.5;
           if (bizs.length === 1) return `<circle cx="${x}" cy="${y}" r="${R}" fill="none" stroke="${BIZ[b].color}" stroke-width="3"/>`;
           return `<path d="M${x + R * Math.cos(a0)},${y + R * Math.sin(a0)} A${R},${R} 0 ${a1 - a0 > Math.PI ? 1 : 0} 1 ${x + R * Math.cos(a1)},${y + R * Math.sin(a1)}" fill="none" stroke="${BIZ[b].color}" stroke-width="3"/>`; }).join("");
-        pins += `<g class="pin${n ? "" : " is-dim"}${active === key ? " is-active" : ""}" data-city="${key}" tabindex="0" role="button" aria-label="${c.name}：${n}拠点">
+        pins += `<g class="pin${n ? "" : " is-dim"}${active === key ? " is-active" : ""}" data-city="${key}" tabindex="0" role="button" aria-label="${c.name}：${n}の拠り所">
           <circle class="halo" cx="${x}" cy="${y}" r="${r + 9}"/>${ring}<circle class="core" cx="${x}" cy="${y}" r="${r}"/><text class="num" x="${x}" y="${y}">${n}</text>
           <text class="city" x="${x + c.lx}" y="${y + c.ly}" text-anchor="${c.anchor}" dominant-baseline="central">${c.name.replace(/（.*）/, "").replace("泉北郡", "").replace("加古郡", "")}${c.hq ? "・本部" : ""}</text></g>`;
       });
-      svgWrap.innerHTML = `<svg class="map-svg" viewBox="0 0 600 340" role="img" aria-label="関西の拠点マップ（概略図）">
+      svgWrap.innerHTML = `<svg class="map-svg" viewBox="0 0 600 340" role="img" aria-label="関西のグループマップ（概略図）">
         <rect class="land" x="0" y="0" width="600" height="340" style="stroke:none"/>
         <polygon points="${pts(WATER)}" fill="#d6ecec" stroke="#c9d9d6" stroke-width="1.2"/>
         <polygon class="island" points="${pts(AWAJI)}"/>
@@ -362,12 +362,12 @@
     const renderPanel = () => {
       if (!active) {
         const list = FAC.filter((f) => biz === "all" || f.biz === biz);
-        panel.innerHTML = `<h3>${biz === "all" ? "関西の拠点" : BIZ[biz].name}<small>${list.length}拠点</small></h3>
+        panel.innerHTML = `<h3>${biz === "all" ? "関西の拠り所" : BIZ[biz].name}<small>${list.length}の拠り所</small></h3>
           <p class="hint">地図のピン、または下の地域を選ぶと、その地域の施設が表示されます。</p>`;
         return;
       }
       const c = CITIES[active], list = facsOf(active);
-      panel.innerHTML = `<h3>${c.name}<small>${c.pref}・${list.length}拠点</small></h3>
+      panel.innerHTML = `<h3>${c.name}<small>${c.pref}・${list.length}の拠り所</small></h3>
         ${c.hq ? '<p class="hint">法人本部（大阪駅前第一ビル6階）があります。</p>' : ""}
         <ul>${list.map((f) => `<li><i style="background:${BIZ[f.biz].color}"></i><div>${esc(f.name)}${c.check ? '<span class="check">所在地要確認</span>' : ""}<small>${BIZ[f.biz].name}｜${esc(f.note)}</small></div></li>`).join("")}</ul>
         <a class="link-more" href="business.html#${list[0] ? list[0].biz : "gairai"}">この地域の事業を見る</a>`;

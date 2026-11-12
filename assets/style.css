@@ -888,3 +888,15 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
   .mv__scroll { display: flex; position: absolute; z-index: 3; left: 30px; top: 50%; transform: rotate(90deg); transform-origin: left center; font-family: var(--font-en); font-size: 11px; letter-spacing: .3em; align-items: center; gap: 10px; }
   .mv__scroll::after { content: ""; width: 48px; height: 1px; background: var(--c-text); opacity: .5; }
 }
+
+/* グループマップ導入文（現行サイト「使命」本文） */
+.map-verse { margin: 4px 0 24px; font-size: 15px; }
+.map-verse p { margin: 0 0 1.4em; }
+.map-verse__key { font-family: var(--font-hand); font-size: 24px; letter-spacing: .12em; color: var(--c-brand-ink); }
+@media (min-width: 768px) { .map-verse { font-size: 16px; } .map-verse__key { font-size: 28px; } }
+@media (min-width: 1080px) {
+  [data-kansai-map] .sec-head { display: grid; grid-template-columns: 1fr 1fr; column-gap: 72px; align-items: start; }
+  [data-kansai-map] .sec-head > *:not(.map-verse) { grid-column: 1; }
+  [data-kansai-map] .map-verse { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin: 0; padding-left: 40px; border-left: 1px solid var(--c-line); }
+  [data-kansai-map] .map-verse p:last-child { margin-bottom: 0; }
+}
