@@ -836,11 +836,13 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: rgba(250, 247, 242, .22);
   -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px);
-  -webkit-mask-image: radial-gradient(circle at var(--lx) var(--ly), transparent calc(var(--r) - 1px), #000 var(--r));
-          mask-image: radial-gradient(circle at var(--lx) var(--ly), transparent calc(var(--r) - 1px), #000 var(--r));
+  -webkit-mask-image: radial-gradient(circle at var(--lx) var(--ly), transparent calc(var(--r, 0px) - var(--f, 1px)), #000 var(--r, 0px));
+          mask-image: radial-gradient(circle at var(--lx) var(--ly), transparent calc(var(--r, 0px) - var(--f, 1px)), #000 var(--r, 0px));
 }
-.mv__ring { position: absolute; z-index: 1; left: var(--lx); top: var(--ly); width: var(--lens); aspect-ratio: 1; transform: translate(-50%, -50%) scale(.2); border-radius: 50%; border: 1px solid rgba(255,255,255,.75); opacity: 0; pointer-events: none; transition: transform 1.4s .2s cubic-bezier(.25,.46,.45,.94), opacity .8s .6s; }
-.mv.is-animated .mv__ring { transform: translate(-50%, -50%) scale(1.035); opacity: 1; }
+/* リングは半径--r（JS）に追従。広がりきると四隅だけがぼけて残る */
+.mv__ring { position: absolute; z-index: 1; left: var(--lx); top: var(--ly); width: calc(var(--r, 0px) * 2 + 20px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 1px solid rgba(255,255,255,.75); opacity: 0; pointer-events: none; transition: opacity .8s .6s; }
+.mv.is-animated .mv__ring { opacity: 1; }
+.mv.is-open .mv__ring { opacity: .45; transition: opacity 2s 1s; }
 .mv__inner { position: absolute; inset: 0; z-index: 2; display: flex; align-items: flex-end; pointer-events: none; }
 .mv__inner .container { padding-bottom: 92px; pointer-events: auto; }
 .mv .eyebrow { color: var(--c-text); text-shadow: 0 0 12px rgba(255,255,255,.95); }
@@ -871,7 +873,8 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
 .mv__scroll { display: none; }
 @media (prefers-reduced-motion: reduce) {
   .mv__copy .ch-s, .mv__fade { opacity: 1; transform: none; filter: none; animation: none !important; transition: none; }
-  .mv__ring { opacity: 1; transform: translate(-50%, -50%) scale(1.035); transition: none; }
+  .mv__ring { opacity: .45; transition: none; }
+  .mv .mv__inner::before { transition: none; }
 }
 @media (min-width: 768px) {
   .mv__copy { font-size: 52px; }
@@ -899,4 +902,12 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
   [data-kansai-map] .sec-head > *:not(.map-verse) { grid-column: 1; }
   [data-kansai-map] .map-verse { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin: 0; padding-left: 40px; border-left: 1px solid var(--c-line); }
   [data-kansai-map] .map-verse p:last-child { margin-bottom: 0; }
+}
+
+/* 円が広がった後も、コピーの可読性を保つ紙色のベール（左下から） */
+.mv__inner::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 2.2s .9s ease;
+  background: linear-gradient(to top, rgba(250,247,242,.92) 0%, rgba(250,247,242,.7) 26%, rgba(250,247,242,0) 58%); }
+.mv.is-open .mv__inner::before { opacity: 1; }
+@media (min-width: 1080px) {
+  .mv__inner::before { background: radial-gradient(ellipse 62% 78% at 0% 72%, rgba(250,247,242,.88) 0%, rgba(250,247,242,.62) 45%, rgba(250,247,242,0) 100%); }
 }

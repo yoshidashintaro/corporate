@@ -282,19 +282,43 @@
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, saveData = navigator.connection && navigator.connection.saveData;
     set(!(reduce || saveData));
     btn.addEventListener("click", () => set(!mv.classList.contains("is-playing")));
-    // 円レンズ：リング要素の幅（=CSSの--lens）を基準に、半径をJSで広げる
-    const mask = $(".mv__mask", mv), ring = $(".mv__ring", mv);
-    const target = () => ring.offsetWidth / 2;
-    const setR = (r) => mask.style.setProperty("--r", r.toFixed(1) + "px");
-    setR(0);
-    const openLens = () => {
-      if (reduce) { setR(target()); return; }
-      const t0 = performance.now() + 200, dur = 1400;
-      const ease = (t) => 1 - Math.pow(1 - t, 3);
-      const step = () => { const t = Math.min(1, Math.max(0, (performance.now() - t0) / dur)); setR(target() * ease(t)); if (t < 1) setTimeout(step, 16); };
+    // 円レンズ：①レンズサイズ（CSSの--lens）まで開く → ②ひと呼吸 → ③画面の約9割がクリアになるまで広がる
+    const ring = $(".mv__ring", mv);
+    const COVER = 0.9;                          // 最終的にクリアに見せる面積比（1にすると全面クリア）
+    const lensR = () => mv.style.getPropertyValue("--lens-px") ? parseFloat(mv.style.getPropertyValue("--lens-px")) : 0;
+    const measureLens = () => { const el = document.createElement("div"); el.style.cssText = "position:absolute;visibility:hidden;width:var(--lens)"; mv.appendChild(el); const w = el.offsetWidth; el.remove(); mv.style.setProperty("--lens-px", w + "px"); };
+    // 円の中心から、MV面積のCOVER割を覆う半径を数値的に求める（四隅だけがぼけて残る）
+    const coverR = () => {
+      const W = mv.clientWidth, H = mv.clientHeight, cx = ring.offsetLeft, cy = ring.offsetTop;
+      const far = Math.max(Math.hypot(cx, cy), Math.hypot(W - cx, cy), Math.hypot(cx, H - cy), Math.hypot(W - cx, H - cy));
+      if (COVER >= 1) return far + 40;
+      const N = 48, pts = [];
+      for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) pts.push(Math.hypot((i + .5) / N * W - cx, (j + .5) / N * H - cy));
+      pts.sort((a, b) => a - b);
+      return pts[Math.floor(pts.length * COVER)];
+    };
+    const setR = (r, f) => { mv.style.setProperty("--r", r.toFixed(1) + "px"); mv.style.setProperty("--f", f.toFixed(1) + "px"); };
+    let phase = 0;
+    const tween = (from, to, fFrom, fTo, delay, dur, ease, done) => {
+      const t0 = performance.now() + delay;
+      const step = () => {
+        const t = Math.min(1, Math.max(0, (performance.now() - t0) / dur)), e = ease(t);
+        setR(from + (to - from) * e, fFrom + (fTo - fFrom) * e);
+        if (t < 1) setTimeout(step, 16); else if (done) done();
+      };
       setTimeout(step, 16);
     };
-    addEventListener("resize", () => setR(target()));
+    const outCubic = (t) => 1 - Math.pow(1 - t, 3), inOut = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    measureLens(); setR(0, 1);
+    const openLens = () => {
+      if (reduce) { phase = 2; setR(coverR(), 120); mv.classList.add("is-open"); return; }
+      tween(0, lensR() / 2, 1, 1, 200, 1400, outCubic, () => {
+        phase = 1;
+        mv.classList.add("is-open");
+        tween(lensR() / 2, coverR(), 1, 120, 900, 2200, inOut, () => { phase = 2; });
+      });
+    };
+    addEventListener("resize", () => { measureLens(); if (phase === 2) setR(coverR(), 120); else if (phase === 1) setR(lensR() / 2, 1); });
     setTimeout(() => { mv.classList.add("is-animated"); openLens(); }, 60);
   });
 
