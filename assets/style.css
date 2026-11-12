@@ -911,3 +911,75 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
 @media (min-width: 1080px) {
   .mv__inner::before { background: radial-gradient(ellipse 62% 78% at 0% 72%, rgba(250,247,242,.88) 0%, rgba(250,247,242,.62) 45%, rgba(250,247,242,0) 100%); }
 }
+
+/* 理事長ポートレート・TOPの理事長メッセージカード */
+.msg__photo--ceo { margin: 0; background: #f4f1ec; }
+.msg__photo--ceo img { object-position: 50% 20%; }
+.ceo-card { display: flex; align-items: center; gap: 18px; margin-top: 18px; padding: 16px 20px 16px 16px; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-l); text-decoration: none; color: var(--c-text); transition: box-shadow .3s, transform .3s; }
+.ceo-card:hover { box-shadow: 0 10px 28px rgba(58,54,50,.08); transform: translateY(-2px); }
+.ceo-card img { flex: none; width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: 50% 18%; background: #f4f1ec; }
+.ceo-card span { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.ceo-card small { font-family: var(--font-script); font-size: 15px; color: var(--c-brand-ink); }
+.ceo-card b { font-family: var(--font-hand); font-weight: 400; font-size: 17px; line-height: 1.6; letter-spacing: .06em; }
+.ceo-card em { font-style: normal; font-size: 12px; color: var(--c-muted); letter-spacing: .12em; }
+.ceo-card::after { content: "›"; margin-left: auto; padding-left: 8px; font-size: 22px; color: var(--c-brand-ink); }
+
+/* ===== LIFE STAGE（0〜100歳の節目 × 事業） ===== */
+.lifemap { --cols: 11; margin: 8px 0 48px; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-l); padding: 22px 0 18px; overflow: hidden; }
+.lm-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; padding: 0 20px 14px; }
+.lm-title { font-family: var(--font-en); font-weight: 500; letter-spacing: .28em; font-size: 15px; color: var(--c-brand-ink); }
+.lm-sub { font-family: var(--font-hand); font-size: 16px; letter-spacing: .08em; }
+.lm-scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent); mask-image: linear-gradient(90deg, #000 88%, transparent); }
+.lm-scroll:focus-visible { outline: 2px solid var(--w-aqua); outline-offset: -2px; }
+.lm-inner { min-width: 960px; padding: 0 20px 6px; }
+.lm-events, .lm-bars { display: grid; grid-template-columns: repeat(var(--cols), 1fr); }
+.lm-events { list-style: none; margin: 0; padding: 0; }
+.lm-events li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; padding: 0 2px; }
+.lm-events svg { width: 36px; height: 36px; fill: none; stroke: var(--c-text); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
+.lm-ev { order: 2; font-size: 12px; font-weight: 700; line-height: 1.45; letter-spacing: .02em; min-height: 2.9em; }
+.lm-age { order: 3; font-family: var(--font-en); font-weight: 300; font-size: 22px; line-height: 1; margin-top: 8px; position: relative; padding-bottom: 14px; }
+.lm-age small { font-family: var(--font-sans); font-size: 10px; font-weight: 700; margin-left: 1px; }
+.lm-age::after { content: ""; position: absolute; left: 50%; bottom: -5px; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: #fff; border: 2px solid var(--c-brand-ink); z-index: 1; }
+/* 年齢軸：水彩カラーのグラデーション矢印 */
+.lm-axis { position: relative; height: 6px; margin: 0 calc(50% / var(--cols)) 0 0; border-radius: 3px;
+  background: linear-gradient(90deg, var(--w-blue), var(--w-aqua) 22%, var(--w-sage) 45%, var(--w-mustard) 68%, var(--w-coral)); opacity: .55; }
+.lm-axis::after { content: ""; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); border: 9px solid transparent; border-left: 14px solid var(--w-coral); border-right: 0; }
+.lm-bars { row-gap: 8px; margin-top: 18px; }
+.lm-bar { position: relative; display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px 14px; margin: 0 6px; border-radius: 22px; text-decoration: none; color: var(--c-text);
+  background: color-mix(in srgb, var(--c) 16%, #fff); border-left: 6px solid var(--c); transition: background .25s, transform .25s; }
+.lm-bar:hover { background: color-mix(in srgb, var(--c) 28%, #fff); transform: translateX(2px); }
+.lm-bar b { flex: none; font-size: 14px; letter-spacing: .06em; color: color-mix(in srgb, var(--c) 70%, #222); }
+.lm-bar span { font-size: 12px; color: var(--c-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.lm-bar::after { content: "›"; margin-left: auto; padding-left: 6px; color: var(--c); font-size: 18px; }
+.lm-hint { margin: 10px 0 0; text-align: center; font-size: 11px; color: var(--c-muted); letter-spacing: .1em; }
+@media (min-width: 1080px) {
+  .lifemap { padding: 34px 0 30px; }
+  .lm-head { padding: 0 40px 22px; }
+  .lm-title { font-size: 17px; } .lm-sub { font-size: 19px; }
+  .lm-scroll { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .lm-inner { min-width: 0; padding: 0 40px; }
+  .lm-ev { font-size: 13px; }
+  .lm-age { font-size: 26px; }
+  .lm-hint { display: none; }
+}
+.lm-bar { grid-column: var(--s) / var(--e); }
+/* SP：縦のタイムライン（年齢が上→下、事業は縦帯） */
+@media (max-width: 767px) {
+  .lifemap { padding: 20px 0 16px; }
+  .lm-scroll { overflow: visible; -webkit-mask-image: none; mask-image: none; }
+  .lm-inner { min-width: 0; padding: 0 14px 0 16px; display: grid; grid-template-columns: 1fr repeat(5, 30px); grid-auto-rows: minmax(60px, auto); column-gap: 5px; }
+  .lm-events, .lm-bars { display: contents; }
+  .lm-axis { display: none; }
+  .lm-events li { grid-row: var(--n); grid-column: 1; flex-direction: row; align-items: center; text-align: left; gap: 10px; padding: 0; border-bottom: 1px dashed var(--c-line); }
+  .lm-events li:last-child { border-bottom: 0; }
+  .lm-events svg { order: 2; width: 28px; height: 28px; flex: none; }
+  .lm-age { order: 1; width: 52px; flex: none; margin: 0; padding: 0; font-size: 22px; text-align: right; }
+  .lm-age::after { display: none; }
+  .lm-ev { order: 3; min-height: 0; font-size: 12px; }
+  .lm-ev br { display: none; }
+  .lm-bar { grid-row: var(--s) / var(--e); grid-column: calc(1 + var(--i)); margin: 6px 0; padding: 10px 0; min-height: 0; flex-direction: column; justify-content: flex-start; border-left: 0; border-top: 4px solid var(--c); border-radius: 15px; }
+  .lm-bar b { writing-mode: vertical-rl; font-size: 13px; letter-spacing: .2em; }
+  .lm-bar span { display: none; }
+  .lm-bar::after { content: none; }
+  .lm-bar:hover { transform: none; }
+}

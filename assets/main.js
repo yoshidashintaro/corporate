@@ -322,6 +322,47 @@
     setTimeout(() => { mv.classList.add("is-animated"); openLens(); }, 60);
   });
 
+  /* ---------------- LIFE STAGE：0歳〜100歳の節目と、寄り添う事業 ---------------- */
+  // アイコンはすべて線画のオリジナル（stroke=currentColor）
+  const LI = {
+    baby: '<circle cx="16" cy="11" r="6"/><path d="M8 28c0-5 3.6-9 8-9s8 4 8 9"/><path d="M13.5 11.5h.01M18.5 11.5h.01M14 14c1.2 1 2.8 1 4 0"/>',
+    blocks: '<rect x="5" y="17" width="10" height="10" rx="1.5"/><rect x="17" y="17" width="10" height="10" rx="1.5"/><rect x="11" y="6" width="10" height="10" rx="1.5"/><path d="M14 11h4M8 22h4M20 22h4"/>',
+    bag: '<path d="M8 12c0-4 3.6-7 8-7s8 3 8 7v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2z"/><path d="M8 15h16M14 19h4"/>',
+    cap: '<path d="M3 12l13-6 13 6-13 6z"/><path d="M9 15v6c0 2 3 4 7 4s7-2 7-4v-6M29 12v7"/>',
+    sparkle: '<path d="M16 4c1 6 3 8 9 9-6 1-8 3-9 9-1-6-3-8-9-9 6-1 8-3 9-9z"/><path d="M25 21c.5 2.4 1.4 3.3 3.6 3.6-2.2.4-3.1 1.3-3.6 3.6-.5-2.3-1.4-3.2-3.6-3.6 2.2-.3 3.1-1.2 3.6-3.6z"/>',
+    rings: '<circle cx="12" cy="19" r="7"/><circle cx="20" cy="19" r="7"/><path d="M10 9l2-4 2 4"/>',
+    bag2: '<rect x="4" y="11" width="24" height="15" rx="2.5"/><path d="M12 11V8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3M4 17h24"/>',
+    hands: '<path d="M4 20l6-5c1.5-1.2 3.5-1.2 5 0l2 1.6"/><path d="M28 20l-6-5c-1.5-1.2-3.5-1.2-5 0l-5 4c-1 .8-.6 2.4.7 2.4H16"/><path d="M4 20v6h7l5-3h5l7-3"/><path d="M16 4.5c-1.3-1.6-4-1.2-4 1 0 1.8 2.4 3.4 4 4.5 1.6-1.1 4-2.7 4-4.5 0-2.2-2.7-2.6-4-1z"/>',
+    sprout: '<path d="M16 28V15"/><path d="M16 17c0-5-4-8-10-8 0 5 4 8 10 8z"/><path d="M16 14c0-4 3-7 9-7 0 4-3 7-9 7z"/><path d="M9 28h14"/>',
+    cane: '<circle cx="14" cy="6" r="3"/><path d="M14 10v8l-3 9M14 18l4 9M10 13l4-1 4 3"/><path d="M22 15v12M22 15c0-2 3-2 3 0"/>',
+    home: '<path d="M4 15L16 5l12 10"/><path d="M7 13v14h18V13"/><path d="M16 24c-2.5-1.8-4.5-3.3-4.5-5.3 0-2.6 3.2-3.2 4.5-1.3 1.3-1.9 4.5-1.3 4.5 1.3 0 2-2 3.5-4.5 5.3z"/>'
+  };
+  const LIFE_EV = [
+    ["0", "baby", "誕生"], ["3", "blocks", "発達の<br>気づき"], ["6", "bag", "小学校<br>入学"], ["18", "cap", "進学・<br>ひとり立ち"],
+    ["25", "sparkle", "自分らしく<br>ありたい"], ["30", "rings", "結婚・<br>出産"], ["45", "bag2", "働きざかりの<br>からだの不調"], ["55", "hands", "親の<br>介護"],
+    ["70", "sprout", "セカンド<br>ライフ"], ["85", "cane", "通院が<br>むずかしく"], ["100", "home", "住み慣れた<br>家で"]
+  ];
+  // [事業キー, 名称, 開始列, 終了列(グリッド線), 中身]
+  const LIFE_BIZ = [
+    ["shogai", "障がい福祉", 1, 9, "児童発達支援 → 放課後等デイ → 就労支援・グループホーム"],
+    ["biyou", "美容医療", 4, 10, "医療脱毛・美肌治療・メンズ・アートメイク"],
+    ["gairai", "外来・入院", 1, 12, "整形外科・内科・皮膚科・リハビリ ── 0歳から、すべての世代のかかりつけに"],
+    ["kaigo", "介護", 8, 12, "家族の介護から、自分の介護まで"],
+    ["zaitaku", "在宅医療", 9, 12, "訪問診療・看取り"]
+  ];
+  $$("[data-lifemap]").forEach((el) => {
+    const pre = el.dataset.lifemap || "#";
+    const ev = LIFE_EV.map(([age, ic, label], n) => `<li style="--n:${n + 1}"><svg viewBox="0 0 32 32" aria-hidden="true">${LI[ic]}</svg><span class="lm-age">${age}<small>歳</small></span><span class="lm-ev">${label}</span></li>`).join("");
+    const biz = LIFE_BIZ.map(([k, name, s, e, txt], i) => `<a class="lm-bar" href="${pre}${k}" style="--c:var(--biz-${k});--s:${s};--e:${e};--i:${i + 1}"><b>${name}</b><span>${txt}</span></a>`).join("");
+    el.innerHTML = `<div class="lm-head"><span class="lm-title">LIFE STAGE</span><span class="lm-sub">0歳から100歳まで、人生の節目に寄り添う</span></div>
+      <div class="lm-scroll" tabindex="0" aria-label="ライフステージと事業の対応図（横にスクロールできます）"><div class="lm-inner">
+        <ol class="lm-events">${ev}</ol>
+        <div class="lm-axis" aria-hidden="true"></div>
+        <div class="lm-bars">${biz}</div>
+      </div></div>
+      `;
+  });
+
   /* ---------------- 関西グループマップ ---------------- */
   const X = (lon) => (lon - 134.74) * 500;
   const Y = (lat) => (34.92 - lat) * 610;
