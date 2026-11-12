@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EMIFULL 採用サイト（モック）</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="recruit" data-site="recruit">
+<div id="site-header"></div>
+<div class="subnav-wrap"><div class="container"><nav class="recruit-nav" aria-label="採用サイト内ナビ">
+  <a href="#people">人を知る</a><a href="#work">仕事を知る</a><a href="#day">1日の流れ</a><a href="#system">制度</a><a href="jobs.html">求人検索</a><a href="#faq">FAQ</a>
+</nav></div></div>
+
+<main>
+  <section class="r-hero" data-req="採用MV（縦型動画想定）">
+    <div class="r-hero__media"><img src="img/young-staff.jpg" alt="笑顔で話す若手の医療スタッフ" fetchpriority="high"></div>
+    <div class="container r-hero__body">
+      <span class="eyebrow" style="color:#fff">Recruit <small>採用情報</small></span>
+      <h1>あなたの専門性を、<br>待っている場所がある。</h1>
+      <p>大阪・兵庫・奈良の<span data-fac-count>26</span>拠点、5つの事業で。<br>「ここに行けば大丈夫」を一緒に増やす仲間を募集しています。</p>
+    </div>
+  </section>
+
+  <!-- 求人クイック検索（採用TOPでは最前面） -->
+  <div class="container quick">
+    <div class="quick__card" data-req="採用TOPでは「仕事を探す」をさらに前面に">
+      <p class="quick__title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>仕事を探す</p>
+      <p class="quick__note">職種 → 勤務地 → 雇用形態の順に選べます</p>
+      <form data-quick>
+        <div class="field"><label for="r-type"><span class="step">1</span>職種</label>
+          <select class="select" id="r-type" name="type"><option value="">すべての職種</option><option>医師</option><option>看護師</option><option>PT/OT/ST</option><option>介護・福祉職</option><option>医療事務・本部職</option></select></div>
+        <div class="field"><label for="r-area"><span class="step">2</span>勤務地</label>
+          <select class="select" id="r-area" name="area"><option value="">すべての勤務地</option><option>大阪府</option><option>兵庫県</option><option>奈良県</option></select></div>
+        <div class="field"><label for="r-emp"><span class="step">3</span>雇用形態</label>
+          <select class="select" id="r-emp" name="emp"><option value="">すべての雇用形態</option><option>正職員</option><option>パート</option><option>非常勤</option></select></div>
+        <button class="btn btn--primary" type="submit">求人を探す</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 仕事一覧 -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="sec-head"><span class="eyebrow">Work <small>仕事を知る</small></span><h2 class="h-sec">職種から知る</h2>
+        <p class="lead">仕事内容・連携・キャリアを職種ごとにまとめています。</p></div>
+      <div class="job-types">
+        <a class="job-type" href="jobs.html?type=医師"><b>医師</b><span>外来・入院／在宅医療</span><em>2 JOBS →</em></a>
+        <a class="job-type" href="jobs.html?type=看護師"><b>看護師</b><span>病棟・外来・訪問・美容</span><em>3 JOBS →</em></a>
+        <a class="job-type" href="jobs.html?type=PT/OT/ST"><b>PT／OT／ST</b><span>医療リハ・児童発達支援</span><em>2 JOBS →</em></a>
+        <a class="job-type" href="jobs.html?type=介護・福祉職"><b>介護・福祉職</b><span>介護・障がい福祉</span><em>2 JOBS →</em></a>
+        <a class="job-type" href="jobs.html?type=医療事務・本部職"><b>医療事務・本部職</b><span>受付・カウンセラー・本部</span><em>2 JOBS →</em></a>
+        <a class="job-type" href="jobs.html" style="background:var(--c-bloom-tint);border-color:transparent"><b>すべての求人</b><span>条件を細かく絞り込む</span><em>11 JOBS →</em></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 人を知る -->
+  <section class="section section--teal" id="people">
+    <div class="container">
+      <div class="sec-head sec-head--row"><div><span class="eyebrow">People <small>人を知る</small></span><h2 class="h-sec">人を知る</h2>
+        <p class="lead" style="margin:0">入職した理由、いまの仕事、これからのこと。</p></div><span class="scroll-hint">横にスワイプ →</span></div>
+      <div class="scroller">
+        <a class="voice-card" href="interview.html"><div class="voice-card__media"><img src="img/doctor-consult.jpg" alt="" loading="lazy" style="object-position:42% 50%"><span class="duration">INTERVIEW</span><div class="voice-card__cap"><b>地域の困りごとに、医師として向き合う</b><span>医師／在宅医療事業部</span></div></div></a>
+        <a class="voice-card" href="interview.html"><div class="voice-card__media"><img src="img/nurses-three.jpg" alt="" loading="lazy" style="object-position:78% 50%"><span class="duration">0:38</span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><div class="voice-card__cap"><b>ブランクからの復職でも安心できた</b><span>看護師／2022年入職</span></div></div></a>
+        <a class="voice-card" href="interview.html"><div class="voice-card__media"><img src="img/rehab-pt.jpg" alt="" loading="lazy" style="object-position:60% 50%"><span class="duration">INTERVIEW</span><div class="voice-card__cap"><b>生活に戻るまでを支えたい</b><span>理学療法士／2021年入職</span></div></div></a>
+        <a class="voice-card" href="interview.html"><div class="voice-card__media"><img src="img/care-staff.jpg" alt="" loading="lazy" style="object-position:45% 50%"><span class="duration">0:52</span><span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><div class="voice-card__cap"><b>住み慣れた家での暮らしを支える</b><span>介護職／介護事業部</span></div></div></a>
+        <a class="voice-card" href="interview.html"><div class="voice-card__media"><img src="img/team-laptop.jpg" alt="" loading="lazy" style="object-position:40% 50%"><span class="duration">TALK</span><div class="voice-card__cap"><b>多職種座談会：連携のリアル</b><span>医師・看護・リハ・事務</span></div></div></a>
+      </div>
+      <a class="link-more" href="interview.html">インタビュー一覧へ</a>
+    </div>
+  </section>
+
+  <!-- 1日の流れ -->
+  <section class="section" id="day">
+    <div class="container two-col">
+      <div>
+        <span class="eyebrow">A Day <small>1日の流れ</small></span><h2 class="h-sec">病棟看護師の1日</h2>
+        <p class="lead">日勤の一例です。職種・施設・勤務形態によって異なります。</p>
+        <figure class="pmvv-photo" style="aspect-ratio:4/3"><img src="img/station-team.jpg" alt="ナースステーションで打ち合わせをするスタッフ" loading="lazy"></figure>
+      </div>
+      <ol class="timeline">
+        <li><time>8:30</time><div><b>申し送り</b><p>夜勤者から患者さんの状態を引き継ぎます。</p></div></li>
+        <li><time>9:30</time><div><b>検温・処置・ケア</b><p>受け持ち患者さんを回り、必要なケアを行います。</p></div></li>
+        <li><time>12:00</time><div><b>休憩</b><p>交代で60分。スタッフ同士の会話も大切な時間。</p></div></li>
+        <li><time>14:00</time><div><b>多職種カンファレンス</b><p>医師・リハ・MSWと退院に向けた支援を話し合います。</p></div></li>
+        <li><time>16:30</time><div><b>記録・申し送り</b><p>電子カルテに記録し、夜勤者へ引き継ぎます。</p></div></li>
+        <li><time>17:30</time><div><b>退勤</b><p>残業が出ないよう、チームで業務を調整しています。</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 制度 -->
+  <section class="section section--tint" id="system">
+    <div class="container">
+      <div class="sec-head"><span class="eyebrow">System <small>制度・働く環境</small></span><h2 class="h-sec">制度・働く環境</h2></div>
+      <div class="env-list">
+        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9"/></svg></span><div><h3>教育・研修</h3><p>入職時オリエンテーション、プリセプター制度、職種別研修。</p></div></div>
+        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 15.6 7 18.2l1-5.5-4-3.9 5.5-.8z"/></svg></span><div><h3>資格取得支援</h3><p>介護福祉士・認定資格などの受験費用補助（条件あり）。</p></div></div>
+        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></span><div><h3>子育て・介護との両立</h3><p>育児・介護休業、短時間勤務、日勤のみの働き方を相談可能。</p></div></div>
+      </div>
+      <dl class="numbers">
+        <div class="num"><dt>職員数</dt><dd>000<small>名</small></dd></div>
+        <div class="num"><dt>有給取得率</dt><dd>00<small>%</small></dd></div>
+        <div class="num"><dt>月平均残業</dt><dd>0.0<small>h</small></dd></div>
+        <div class="num"><dt>育休取得者</dt><dd>00<small>名</small></dd></div>
+      </dl>
+      <p class="sample-note">※数値は人事データ確認後に掲載（モックでは仮表示）。</p>
+    </div>
+  </section>
+
+  <!-- 新着求人 -->
+  <section class="section">
+    <div class="container">
+      <div class="sec-head sec-head--row"><div><span class="eyebrow">New Jobs <small>新着の求人</small></span><h2 class="h-sec">新着の求人</h2></div><a class="link-more" href="jobs.html">すべての求人</a></div>
+      <div class="job-list" data-latest-jobs="3"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--warm" id="faq">
+    <div class="container narrow">
+      <div class="sec-head"><span class="eyebrow">FAQ <small>よくある質問</small></span><h2 class="h-sec">よくある質問</h2></div>
+      <div class="faq">
+        <details><summary>応募の前に施設見学はできますか？</summary><p>はい、可能です。各求人ページの「見学を申し込む」からご予約ください。オンラインでの説明も対応しています。</p></details>
+        <details><summary>ブランクがあっても応募できますか？</summary><p>応募いただけます。復職者向けの研修やプリセプターのサポートがあります（施設により内容が異なります）。</p></details>
+        <details><summary>選考の流れを教えてください。</summary><p>応募 → 書類確認 → 面接（1〜2回）→ 内定 が基本の流れです。詳細は求人ごとに記載しています。</p></details>
+        <details><summary>夜勤なし・短時間での勤務は可能ですか？</summary><p>職種・施設によって可能です。求人検索で「パート」を選ぶか、面接時にご相談ください。</p></details>
+        <details><summary>応募後に求人サイトへ移動するのはなぜですか？</summary><p>応募情報を安全に管理するため、外部の応募管理システムを利用しています。移動前に画面上でお知らせします。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta-band"><img src="img/outpatient.jpg" alt="">
+        <h2>まずは、見学から。</h2>
+        <p>職場の雰囲気を見てから決めたい方へ。<br>見学・オンライン説明を受け付けています。</p>
+        <div class="btns"><a class="btn btn--white" href="jobs.html">求人を探す</a><a class="btn btn--ghost" style="color:#fff;box-shadow:inset 0 0 0 1.5px #fff" href="#">見学を申し込む</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>

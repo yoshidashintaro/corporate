@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>お問い合わせ｜医療法人社団EMIFULL（モック）</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="contact" data-site="corp">
+<div id="site-header"></div>
+
+<main>
+  <div class="page-hero page-hero--band paper">
+    <div class="container narrow">
+      <nav class="breadcrumb" aria-label="パンくず"><a href="index.html">TOP</a><span>お問い合わせ</span></nav>
+      <span class="eyebrow">Contact <small>お問い合わせ</small></span>
+      <h1 class="page-title" style="margin-top:18px">お問い合わせ</h1>
+      <p class="lead" style="margin-top:10px">事業・連携・取材などのご相談はこちらから。<br>採用へのご応募は <a href="recruit.html" style="color:var(--c-brand-ink)">採用情報</a> からお願いいたします。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container narrow">
+      <form id="contact-form" class="form-grid" novalidate data-req="M-07 最低限の項目・入力支援・エラー表示／採用応募と混在させない">
+        <div class="field"><label>お問い合わせ種別<span class="req">必須</span></label>
+          <div class="radio-row chips">
+            <label class="chip"><input type="radio" name="kind" value="事業・サービス" checked><span>事業・サービス</span></label>
+            <label class="chip"><input type="radio" name="kind" value="医療・介護連携"><span>医療・介護連携</span></label>
+            <label class="chip"><input type="radio" name="kind" value="取材・メディア"><span>取材・メディア</span></label>
+            <label class="chip"><input type="radio" name="kind" value="その他"><span>その他</span></label>
+          </div></div>
+        <div class="form-grid form-grid--2">
+          <div class="field"><label for="f-name">お名前<span class="req">必須</span></label><input class="input" id="f-name" name="name" autocomplete="name" required><p class="err">お名前を入力してください</p></div>
+          <div class="field"><label for="f-org">会社・機関名</label><input class="input" id="f-org" name="org" autocomplete="organization"></div>
+          <div class="field"><label for="f-mail">メールアドレス<span class="req">必須</span></label><input class="input" id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required><p class="err">正しいメールアドレスを入力してください</p></div>
+          <div class="field"><label for="f-tel">電話番号</label><input class="input" id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel"></div>
+        </div>
+        <div class="field"><label for="f-msg">お問い合わせ内容<span class="req">必須</span></label><textarea class="textarea" id="f-msg" name="message" required></textarea><p class="err">内容を入力してください</p></div>
+        <div class="field"><label class="chip" style="display:inline-flex"><input type="checkbox" name="agree" required><span>プライバシーポリシーに同意する</span></label><p class="err">同意が必要です</p></div>
+        <button class="btn btn--primary btn--block" type="submit" style="max-width:360px">内容を確認して送信</button>
+      </form>
+      <div class="contact-grid" style="margin-top:40px"><a class="contact-box contact-box--tel" href="tel:0000000000" style="color:var(--c-text);border-color:var(--c-line);background:#fff"><b>TEL 00-0000-0000</b><span>受付時間 0:00〜0:00（要確認）</span></a></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>

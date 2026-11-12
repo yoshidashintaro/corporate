@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>求人詳細｜EMIFULL 採用（モック）</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="job" data-site="recruit">
+<div id="site-header"></div>
+
+<main>
+  <div class="container page-hero">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="recruit.html">採用TOP</a><a href="jobs.html">求人を探す</a><span data-job="title"></span></nav>
+    <div class="job-card__tags"><span class="tag" data-job="type"></span><span class="tag tag--line" data-job="emp"></span><span class="tag tag--line" data-job="area"></span></div>
+    <h1 class="page-title" data-job="title"></h1>
+    <p style="margin:6px 0 0;color:var(--c-muted)"><span data-job="facName"></span>／<span data-job="biz"></span></p>
+  </div>
+
+  <div class="container detail-layout" style="padding-bottom:64px">
+    <div>
+      <figure class="pmvv-photo" style="aspect-ratio:16/9;margin-bottom:32px"><img data-job-img src="img/ward-team.jpg" alt="職場の様子"></figure>
+
+      <h2 class="h-sec" style="font-size:22px">募集要項</h2>
+      <table class="spec" data-req="労働条件は実際の募集条件と一致させる（ATS正本）">
+        <tr><th>職種</th><td data-job="type"></td></tr>
+        <tr><th>雇用形態</th><td data-job="emp"></td></tr>
+        <tr><th>勤務地</th><td><span data-job="facName"></span><br><a href="facility.html" style="font-size:14px;color:var(--c-brand-ink)">施設の詳細を見る</a></td></tr>
+        <tr><th>給与</th><td data-job="salary"></td></tr>
+        <tr><th>勤務時間</th><td data-job="hours"></td></tr>
+        <tr><th>休日</th><td data-job="holiday"></td></tr>
+        <tr><th>応募資格</th><td>該当職種の資格をお持ちの方（経験不問／ブランク可）※ダミー</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備、交通費支給、資格取得支援、育児・介護休業 ※ダミー</td></tr>
+      </table>
+
+      <h2 class="h-sec" style="font-size:22px;margin-top:44px">仕事内容</h2>
+      <p>受け持ちの患者さん・利用者さんへのケアを中心に、医師・リハビリ職・介護職と連携しながら、退院後の生活まで見据えた支援を行います。</p>
+      <p>入職後はプリセプターがつき、段階的に業務を覚えていただきます。</p>
+
+      <h2 class="h-sec" style="font-size:22px;margin-top:44px">選考の流れ</h2>
+      <ol class="steps">
+        <li>応募<small>応募フォーム（外部システム）から送信</small></li>
+        <li>書類確認<small>3営業日以内にご連絡します</small></li>
+        <li>見学・面接<small>見学のみの参加もOK</small></li>
+        <li>内定<small>入職日はご相談に応じます</small></li>
+      </ol>
+
+      <h2 class="h-sec" style="font-size:22px;margin-top:44px">この職場で働く人</h2>
+      <div class="people-grid" style="display:grid;gap:12px">
+        <a class="person-card" href="interview.html"><img src="img/nurses-three.jpg" alt="" style="object-position:85% 30%"><div><b>ブランクからの復職でも安心できた</b><span>看護師／2022年入職</span></div></a>
+        <a class="person-card" href="interview.html"><img src="img/doctor-smile.jpg" alt="" style="object-position:38% 30%"><div><b>地域の困りごとに、医師として向き合う</b><span>医師／在宅医療事業部</span></div></a>
+      </div>
+    </div>
+
+    <aside class="detail-aside" id="apply">
+      <div class="quick__card" data-req="M-09 外部応募システムへの遷移を明示 / apply_click計測">
+        <p class="quick__title" style="margin-bottom:12px">この求人に応募する</p>
+        <a class="btn btn--primary btn--block" href="#" onclick="alert('（モック）外部応募システムへ遷移します');return false;">応募フォームへ進む
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1h5"/></svg></a>
+        <p class="ext-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>応募は外部の応募管理システム（別サイト）で受け付けます。入力は約3分です。</p>
+        <a class="btn btn--secondary btn--block" href="#" style="margin-top:12px">見学を申し込む</a>
+        <a class="btn btn--ghost btn--block" href="recruit.html#faq" style="margin-top:10px;min-height:44px;font-size:14px">よくある質問を見る</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="section section--tint">
+    <div class="container">
+      <div class="sec-head"><span class="eyebrow">Related <small>関連</small></span><h2 class="h-sec">似ている求人</h2></div>
+      <div class="job-list" id="related-jobs"></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>

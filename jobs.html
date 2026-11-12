@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>求人を探す｜EMIFULL 採用（モック）</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="jobs" data-site="recruit" data-no-sticky>
+<div id="site-header"></div>
+
+<main>
+  <div class="container page-hero">
+    <nav class="breadcrumb" aria-label="パンくず"><a href="index.html">TOP</a><a href="recruit.html">採用情報</a><span>求人を探す</span></nav>
+    <span class="eyebrow">Jobs <small>求人</small></span>
+    <h1 class="page-title">求人を探す</h1>
+  </div>
+
+  <div class="container jobs-layout" style="padding-bottom:80px">
+    <form class="filter" id="job-filter" onsubmit="return false" data-req="M-04 職種→勤務地→雇用形態→施設 / 条件はURLに保持">
+      <fieldset><legend><span class="step">1</span>職種</legend><div class="chips" data-chips="type"></div></fieldset>
+      <fieldset><legend><span class="step">2</span>勤務地</legend><div class="chips" data-chips="area"></div></fieldset>
+      <fieldset><legend><span class="step">3</span>雇用形態</legend><div class="chips" data-chips="emp"></div></fieldset>
+      <fieldset style="margin-bottom:6px"><legend>施設</legend><div class="chips" data-chips="fac"></div></fieldset>
+      <button class="btn-reset" type="button" id="filter-reset">条件をすべてクリア</button>
+    </form>
+
+    <div>
+      <div class="result-bar" aria-live="polite">
+        <div><b id="result-count">0</b> 件 <span class="result-cond" id="result-cond"></span></div>
+        <span class="tag tag--line">求人データはダミーです</span>
+      </div>
+      <div id="job-results" class="job-list"></div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>
