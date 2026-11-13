@@ -536,6 +536,72 @@
     });
   }
 
+  /* ---------------- 成長グラフ（年間のべ利用者数・ダミー） ---------------- */
+  const GROWTH = {
+    actual: [[2016, 0.4], [2017, 0.9], [2018, 1.7], [2019, 2.4], [2020, 3.3], [2021, 4.6], [2022, 6.0], [2023, 7.8], [2024, 11.5], [2025, 15.0]],
+    plan: [[2025, 15.0], [2026, 17.8], [2027, 20.8], [2028, 23.9], [2029, 27.0], [2030, 30.0]],
+    ms: [[2016.0, "2016.01", "たろうメディカルクリニック 開院"], [2017.8, "2017.10", "在宅診療を開始"], [2018.3, "2018.04", "美容医療を開始"],
+      [2020.95, "2020.12", "障がい福祉（児童発達支援）を開始"], [2021.85, "2021.11", "医療法人社団EMIFULL 設立"], [2023.1, "2023.02", "尼崎ホームケアクリニック 開院"],
+      [2024.45, "2024.06", "医療法人 医敬会と合併。外来・入院・介護が加わる"], [2024.85, "2025.10", "神戸ヒロ在宅クリニック 開院"]],
+  };
+  const fmt = (v) => (Math.round(v * 10) / 10).toFixed(1).replace(/\.0$/, "");
+  function drawGrowth(box) {
+    const W = box.clientWidth; if (!W) return;
+    const sp = W < 600, H = sp ? 280 : 380;
+    const m = { l: sp ? 34 : 48, r: sp ? 18 : 28, t: 36, b: 30 };
+    const x0 = 2016, x1 = 2030, yMax = 32;
+    const X = (v) => m.l + (v - x0) / (x1 - x0) * (W - m.l - m.r);
+    const Y = (v) => H - m.b - v / yMax * (H - m.t - m.b);
+    const all = GROWTH.actual.concat(GROWTH.plan.slice(1));
+    const at = (yr) => { for (let i = 0; i < all.length - 1; i++) { const [a, va] = all[i], [b, vb] = all[i + 1]; if (yr >= a && yr <= b) return va + (vb - va) * (yr - a) / (b - a); } return all[all.length - 1][1]; };
+    const line = (pts) => pts.map(([a, v], i) => (i ? "L" : "M") + X(a).toFixed(1) + "," + Y(v).toFixed(1)).join("");
+    const area = (pts) => line(pts) + `L${X(pts[pts.length - 1][0]).toFixed(1)},${Y(0)}L${X(pts[0][0]).toFixed(1)},${Y(0)}Z`;
+    const cur = GROWTH.actual[GROWTH.actual.length - 1], end = GROWTH.plan[GROWTH.plan.length - 1];
+    let s = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true">
+      <defs><linearGradient id="gw-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8735a" stop-opacity=".9"/><stop offset="1" stop-color="#e8735a" stop-opacity=".25"/></linearGradient>
+      <pattern id="gw-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#fbe8e1"/><line x1="0" y1="0" x2="0" y2="7" stroke="#e8735a" stroke-opacity=".35" stroke-width="2"/></pattern></defs>`;
+    [0, 10, 20, 30].forEach((v) => { s += `<line class="gw-grid" x1="${m.l}" x2="${W - m.r}" y1="${Y(v)}" y2="${Y(v)}"/><text class="gw-ax" x="${m.l - 8}" y="${Y(v) + 4}" text-anchor="end">${v}${v === 30 ? "万" : ""}</text>`; });
+    for (let yr = x0; yr <= x1; yr += sp ? 2 : 1) s += `<text class="gw-ax" x="${X(yr)}" y="${H - 8}" text-anchor="middle">${sp ? "’" + String(yr).slice(2) : yr}</text>`;
+    s += `<rect x="${X(cur[0])}" y="${m.t - 20}" width="${X(x1) - X(cur[0])}" height="${Y(0) - m.t + 20}" fill="#f4efe6" opacity=".6"/>`;
+    s += `<path d="${area(GROWTH.plan)}" fill="url(#gw-hatch)"/><path d="${area(GROWTH.actual)}" fill="url(#gw-fill)"/>`;
+    s += `<path d="${line(GROWTH.actual)}" fill="none" stroke="#c2503a" stroke-width="2"/><path d="${line(GROWTH.plan)}" fill="none" stroke="#c2503a" stroke-width="2" stroke-dasharray="6 5"/>`;
+    s += `<text class="gw-zone" x="${(X(cur[0]) + X(x1)) / 2}" y="${sp ? Y(0) - 10 : m.t - 6}" text-anchor="middle">見込み</text>`;
+    s += `<line x1="${X(cur[0])}" x2="${X(cur[0])}" y1="${m.t - 20}" y2="${Y(0)}" stroke="#6f6861" stroke-width="1" stroke-dasharray="2 3"/>`;
+    GROWTH.ms.forEach(([yr], i) => { const cx = X(yr), cy = Y(at(yr)) - (sp ? 14 : 18); s += `<line x1="${cx}" x2="${cx}" y1="${cy + 8}" y2="${Y(at(yr))}" stroke="#3a3632" stroke-opacity=".35"/><circle cx="${cx}" cy="${cy}" r="${sp ? 8 : 10}" fill="#fff" stroke="#c2503a" stroke-width="1.5"/><text class="gw-ms" x="${cx}" y="${cy + 4}" text-anchor="middle">${i + 1}</text>`; });
+    const pin = (a, v, label, cls, below) => { const cx = X(a), cy = Y(v); s += `<circle cx="${cx}" cy="${cy}" r="5" fill="#fff" stroke="#c2503a" stroke-width="2"/><text class="gw-val ${cls}" x="${below ? cx + 10 : cx - 10}" y="${below ? cy + 24 : cy - 12}" text-anchor="${below ? "start" : "end"}">${label}</text>`; };
+    pin(cur[0], cur[1], `現在 ${fmt(cur[1])}万人`, "", true);
+    pin(end[0], end[1], `${end[0]}年 ${fmt(end[1])}万人`, "is-plan");
+    s += `<line class="gw-cross" x1="0" x2="0" y1="${m.t}" y2="${Y(0)}"/><circle class="gw-dot" r="5"/>`;
+    s += `<rect class="gw-hit" x="${m.l}" y="0" width="${W - m.l - m.r}" height="${H}" fill="transparent"/></svg><div class="gw-tip" role="status"></div>`;
+    box.innerHTML = s;
+    const chart = box, svg = box.querySelector("svg"), tip = box.querySelector(".gw-tip"), cross = box.querySelector(".gw-cross"), dot = box.querySelector(".gw-dot");
+    const pts = GROWTH.actual.concat(GROWTH.plan.slice(1));
+    const move = (ev) => {
+      const r = svg.getBoundingClientRect(), px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left;
+      let best = pts[0]; pts.forEach((p) => { if (Math.abs(X(p[0]) - px) < Math.abs(X(best[0]) - px)) best = p; });
+      const cx = X(best[0]), cy = Y(best[1]), plan = best[0] > cur[0];
+      chart.classList.add("is-hover"); cross.setAttribute("x1", cx); cross.setAttribute("x2", cx); dot.setAttribute("cx", cx); dot.setAttribute("cy", cy);
+      tip.innerHTML = `<span>${best[0]}年度${plan ? "（見込み）" : ""}</span><b>${fmt(best[1])}<small>万人</small></b>`;
+      tip.style.left = Math.min(Math.max(cx, 60), W - 60) + "px"; tip.style.top = Math.max(cy - 62, 0) + "px";
+    };
+    svg.addEventListener("pointermove", move); svg.addEventListener("pointerdown", move);
+    svg.addEventListener("pointerleave", () => chart.classList.remove("is-hover"));
+  }
+  const growthBoxes = $$("[data-growth-chart]");
+  if (growthBoxes.length) {
+    const tpl = (id) => `<div class="growth__chart-legend"><span><i class="is-actual"></i>実績</span><span><i class="is-plan"></i>見込み</span><span class="u">単位：万人（年度）</span></div>`;
+    growthBoxes.forEach((b) => {
+      const chart = document.createElement("div"); chart.className = "growth__svg"; b.before(Object.assign(document.createElement("div"), { innerHTML: tpl() }).firstChild); b.appendChild(chart);
+      const ms = document.createElement("ol"); ms.className = "growth__ms";
+      ms.innerHTML = GROWTH.ms.map(([, d, t]) => `<li><time>${d}</time>${esc(t)}</li>`).join(""); b.after(ms);
+      const tbl = document.createElement("details"); tbl.className = "growth__table";
+      tbl.innerHTML = `<summary>数値を表で見る</summary><div class="tbl-wrap"><table class="tbl"><thead><tr><th scope="col">年度</th>${GROWTH.actual.concat(GROWTH.plan.slice(1)).map(([y]) => `<th scope="col">${y}</th>`).join("")}</tr></thead><tbody><tr><th scope="row">のべ利用者数（万人）</th>${GROWTH.actual.concat(GROWTH.plan.slice(1)).map(([y, v]) => `<td>${fmt(v)}${y > 2025 ? "<small>見込</small>" : ""}</td>`).join("")}</tr></tbody></table></div>`;
+      ms.after(tbl);
+      drawGrowth(chart);
+    });
+    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => $$(".growth__svg").forEach(drawGrowth), 150); });
+  }
+
   /* ---------------- Reveal ---------------- */
   if (/HeadlessChrome|HeadlessEdg/.test(navigator.userAgent)) $$(".reveal").forEach((el) => el.classList.add("is-in"));
   else if ("IntersectionObserver" in window) {
