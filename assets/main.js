@@ -196,7 +196,7 @@
             <div><h4>Recruit</h4><ul><li><a href="recruit.html">採用情報</a></li><li><a href="recruit.html#work">部門・職種紹介</a></li><li><a href="interview.html">スタッフインタビュー</a></li><li><a href="recruit.html#system">成長できる環境</a></li><li><a href="recruit.html#system">選べる働き方</a></li><li><a href="recruit.html#faq">採用Q&amp;A</a></li></ul></div>
           </nav>
         </div>
-        <div class="foot-sub"><a href="#">プライバシーポリシー</a><a href="#">応募者情報の取り扱い</a><a href="#">サイトのご利用について</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
+        <div class="foot-sub"><a href="#">プライバシーポリシー</a><a href="#">応募者情報の取り扱い</a><a href="#">サイトのご利用について</a><a href="https://www.instagram.com/emifull1122/" target="_blank" rel="noopener">Instagram</a><a href="#">YouTube</a></div>
         <p class="copyright">© EMIFULL All Rights Reserved.</p>
       </div>
     </footer>`;
