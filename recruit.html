@@ -9,7 +9,7 @@
 <body data-page="recruit" data-site="recruit">
 <div id="site-header"></div>
 <div class="subnav-wrap"><div class="container"><nav class="recruit-nav" aria-label="採用サイト内ナビ">
-  <a href="#people">人を知る</a><a href="#work">仕事を知る</a><a href="#day">1日の流れ</a><a href="#system">制度</a><a href="jobs.html">求人検索</a><a href="#faq">FAQ</a>
+  <a href="#people">人を知る</a><a href="#work">仕事を知る</a><a href="#day">1日の流れ</a><a href="#data">データ</a><a href="#system">制度</a><a href="jobs.html">求人検索</a><a href="#faq">FAQ</a>
 </nav></div></div>
 
 <main>
@@ -90,22 +90,86 @@
     </div>
   </section>
 
-  <!-- 制度 -->
-  <section class="section section--tint" id="system">
+  <!-- データで見るEMIFULL -->
+  <section class="section section--tint" id="data" data-req="数値は人事データで差し替え。集計期間・対象を必ず併記">
     <div class="container">
-      <div class="sec-head"><span class="eyebrow">System <small>制度・働く環境</small></span><h2 class="h-sec">制度・働く環境</h2></div>
-      <div class="env-list">
-        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M7 9v5c0 1.5 2.2 3 5 3s5-1.5 5-3V9"/></svg></span><div><h3>教育・研修</h3><p>入職時オリエンテーション、プリセプター制度、職種別研修。</p></div></div>
-        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 15.6 7 18.2l1-5.5-4-3.9 5.5-.8z"/></svg></span><div><h3>資格取得支援</h3><p>介護福祉士・認定資格などの受験費用補助（条件あり）。</p></div></div>
-        <div class="env"><span class="env__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></span><div><h3>子育て・介護との両立</h3><p>育児・介護休業、短時間勤務、日勤のみの働き方を相談可能。</p></div></div>
-      </div>
-      <dl class="numbers">
-        <div class="num"><dt>職員数</dt><dd>000<small>名</small></dd></div>
-        <div class="num"><dt>有給取得率</dt><dd>00<small>%</small></dd></div>
-        <div class="num"><dt>月平均残業</dt><dd>0.0<small>h</small></dd></div>
-        <div class="num"><dt>育休取得者</dt><dd>00<small>名</small></dd></div>
+      <div class="sec-head"><span class="eyebrow">Data <small>データで見るEMIFULL</small></span><h2 class="h-sec">データで見るEMIFULL</h2>
+        <p class="lead">入職前に知りたい“働き方のリアル”を、数字で公開しています。</p><span class="data-asof">2026年10月末時点</span></div>
+      <dl class="data-grid">
+        <div class="data-tile data-tile--key"><dt><span class="tag">給与</span>前職の年収を維持・アップした中途入職者</dt><dd>92<small>%</small></dd><p>経験年数・前職給与を考慮して給与を決定しています。</p></div>
+        <div class="data-tile"><dt><span class="tag">休み</span>年間休日</dt><dd>120<small>日</small></dd><p>4週8休＋夏季・年末年始</p></div>
+        <div class="data-tile"><dt><span class="tag">休み</span>有給休暇取得率</dt><dd>78<small>%</small></dd><p>半日単位で取得できます</p></div>
+        <div class="data-tile"><dt><span class="tag">働き方</span>月平均残業時間</dt><dd>6.2<small>h</small></dd><p>事前申請制・1分単位で支給</p></div>
+        <div class="data-tile"><dt><span class="tag">人間関係</span>入職3年後の定着率</dt><dd>88<small>%</small></dd><p>定期面談・メンター制度で支えます</p></div>
+        <div class="data-tile"><dt><span class="tag">人間関係</span>中途入職者の割合</dt><dd>85<small>%</small></dd><p>さまざまな経験を持つ仲間が集まっています</p></div>
+        <div class="data-tile"><dt><span class="tag">両立</span>産休・育休後の復帰率</dt><dd>100<small>%</small></dd><p>短時間勤務・日勤のみも選べます</p></div>
+        <div class="data-tile data-tile--wide"><dt><span class="tag">組織</span>職員数／平均年齢</dt><dd>420<small>名</small><span class="data-tile__sub">38.5<small>歳</small></span></dd><p>20代〜60代まで幅広く活躍</p></div>
       </dl>
-      <p class="sample-note">※数値は人事データ確認後に掲載（モックでは仮表示）。</p>
+      <div class="comp-grid">
+        <figure class="comp">
+          <figcaption>男女比</figcaption>
+          <div class="comp__bar" role="img" aria-label="男女比：女性72%、男性28%"><span style="--w:72;--c:#eb6834" title="女性 72%"></span><span style="--w:28;--c:#2a78d6" title="男性 28%"></span></div>
+          <ul class="comp__legend"><li><i style="--c:#eb6834"></i>女性<b>72<small>%</small></b></li><li><i style="--c:#2a78d6"></i>男性<b>28<small>%</small></b></li></ul>
+        </figure>
+        <figure class="comp">
+          <figcaption>年齢構成</figcaption>
+          <div class="comp__bar" role="img" aria-label="年齢構成：20代18%、30代31%、40代27%、50代16%、60代〜8%"><span style="--w:18;--c:#86b6ef" title="20代 18%"></span><span style="--w:31;--c:#5598e7" title="30代 31%"></span><span style="--w:27;--c:#2a78d6" title="40代 27%"></span><span style="--w:16;--c:#1c5cab" title="50代 16%"></span><span style="--w:8;--c:#104281" title="60代〜 8%"></span></div>
+          <ul class="comp__legend"><li><i style="--c:#86b6ef"></i>20代<b>18<small>%</small></b></li><li><i style="--c:#5598e7"></i>30代<b>31<small>%</small></b></li><li><i style="--c:#2a78d6"></i>40代<b>27<small>%</small></b></li><li><i style="--c:#1c5cab"></i>50代<b>16<small>%</small></b></li><li><i style="--c:#104281"></i>60代〜<b>8<small>%</small></b></li></ul>
+        </figure>
+        <figure class="comp">
+          <figcaption>職種構成</figcaption>
+          <div class="comp__bar" role="img" aria-label="職種構成：看護師34%、介護・福祉職22%、医療事務・本部18%、PT／OT／ST12%、医師8%、その他6%"><span style="--w:34;--c:#2a78d6" title="看護師 34%"></span><span style="--w:22;--c:#eb6834" title="介護・福祉職 22%"></span><span style="--w:18;--c:#1baf7a" title="医療事務・本部 18%"></span><span style="--w:12;--c:#eda100" title="PT／OT／ST 12%"></span><span style="--w:8;--c:#e87ba4" title="医師 8%"></span><span style="--w:6;--c:#008300" title="その他 6%"></span></div>
+          <ul class="comp__legend"><li><i style="--c:#2a78d6"></i>看護師<b>34<small>%</small></b></li><li><i style="--c:#eb6834"></i>介護・福祉職<b>22<small>%</small></b></li><li><i style="--c:#1baf7a"></i>医療事務・本部<b>18<small>%</small></b></li><li><i style="--c:#eda100"></i>PT／OT／ST<b>12<small>%</small></b></li><li><i style="--c:#e87ba4"></i>医師<b>8<small>%</small></b></li><li><i style="--c:#008300"></i>その他<b>6<small>%</small></b></li></ul>
+        </figure>
+      </div>
+      <p class="sample-note">※数値はダミーです（モック）。グループ全職員（常勤・非常勤）を対象に集計。本番は人事データ確認後に差し替えます。</p>
+    </div>
+  </section>
+
+  <!-- 働きやすい制度 -->
+  <section class="section section--blue" id="system">
+    <div class="container">
+      <div class="sec-head sec-head--row"><div><span class="eyebrow">System <small>働きやすい制度</small></span><h2 class="h-sec">働きやすい制度</h2>
+        <p class="lead" style="margin:0">転職で多い「不安」や「わからない」に、制度と情報公開でこたえます。</p></div><a class="link-more" href="system.html">制度の詳細へ</a></div>
+      <div class="sys-grid">
+        <a class="sys-card" href="system.html#pay">
+          <span class="sys-card__worry">年収が下がらないか不安…</span>
+          <h3>給与・待遇</h3>
+          <ul><li>前職給与・経験年数を考慮して決定</li><li>職種別の年収モデルを公開</li><li>内定時に条件を書面で提示</li></ul>
+          <em>詳しく見る</em>
+        </a>
+        <a class="sys-card" href="system.html#time">
+          <span class="sys-card__worry">勤務時間や休みが見えない…</span>
+          <h3>勤務時間・休日</h3>
+          <ul><li>部署ごとの勤務パターンを公開</li><li>夜勤回数・日当直・オンコールも明記</li><li>年間休日120日・残業は1分単位で支給</li></ul>
+          <em>詳しく見る</em>
+        </a>
+        <a class="sys-card" href="system.html#work">
+          <span class="sys-card__worry">実際の仕事内容がわからない…</span>
+          <h3>仕事内容</h3>
+          <ul><li>職種・部署別の業務内容を具体的に紹介</li><li>見学・半日の職場体験ができる</li><li>配属先スタッフと事前に話せる</li></ul>
+          <em>詳しく見る</em>
+        </a>
+        <a class="sys-card" href="system.html#people">
+          <span class="sys-card__worry">職場の人間関係が心配…</span>
+          <h3>人間関係・サポート</h3>
+          <ul><li>プリセプター＋他部署メンターの2人体制</li><li>入職後1・3・6か月の定期面談</li><li>匿名で使える相談窓口</li></ul>
+          <em>詳しく見る</em>
+        </a>
+        <a class="sys-card" href="system.html#career">
+          <span class="sys-card__worry">ここで成長できるか不安…</span>
+          <h3>教育・キャリア</h3>
+          <ul><li>入職時研修・職種別ラダー</li><li>資格取得費用を補助</li><li>グループ内でのキャリアチェンジ</li></ul>
+          <em>詳しく見る</em>
+        </a>
+        <a class="sys-card" href="system.html#life">
+          <span class="sys-card__worry">家庭と両立できるか心配…</span>
+          <h3>両立支援・福利厚生</h3>
+          <ul><li>育休・短時間勤務・日勤のみ常勤</li><li>託児費用の補助</li><li>健康診断・予防接種は無料</li></ul>
+          <em>詳しく見る</em>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:32px"><a class="btn btn--primary btn--arrow" href="system.html">制度・働く環境をくわしく見る</a></div>
     </div>
   </section>
 
@@ -124,6 +188,10 @@
       <div class="faq">
         <details><summary>応募の前に施設見学はできますか？</summary><p>はい、可能です。各求人ページの「見学を申し込む」からご予約ください。オンラインでの説明も対応しています。</p></details>
         <details><summary>ブランクがあっても応募できますか？</summary><p>応募いただけます。復職者向けの研修やプリセプターのサポートがあります（施設により内容が異なります）。</p></details>
+        <details><summary>給与は前職より下がりませんか？</summary><p>前職の給与と経験年数をふまえて決定します。面接の段階で手当・賞与込みの見込み年収をお伝えし、内定時に書面で提示します。詳しくは<a href="system.html#pay">給与・待遇</a>をご覧ください。</p></details>
+        <details><summary>夜勤やオンコールは必須ですか？</summary><p>部署によって異なります。日勤のみの常勤や、オンコール希望制の部署もあります。回数の目安は<a href="system.html#time">勤務時間・休日</a>に掲載しています。</p></details>
+        <details><summary>有給休暇は希望どおりに取れますか？</summary><p>半日単位で取得でき、取得率は78%です。シフト制の部署では月3日まで希望休を確約しています。</p></details>
+        <details><summary>職場の人間関係が不安です。</summary><p>プリセプターと他部署のメンターの2人体制で支え、入職後1・3・6か月に面談を行います。匿名で使える相談窓口もあります。</p></details>
         <details><summary>選考の流れを教えてください。</summary><p>応募 → 書類確認 → 面接（1〜2回）→ 内定 が基本の流れです。詳細は求人ごとに記載しています。</p></details>
         <details><summary>夜勤なし・短時間での勤務は可能ですか？</summary><p>職種・施設によって可能です。求人検索で「パート」を選ぶか、面接時にご相談ください。</p></details>
         <details><summary>応募後に求人サイトへ移動するのはなぜですか？</summary><p>応募情報を安全に管理するため、外部の応募管理システムを利用しています。移動前に画面上でお知らせします。</p></details>

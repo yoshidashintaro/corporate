@@ -1015,7 +1015,7 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
 .ig__follow { flex: none; font-size: 13px; font-weight: 700; color: #fff; background: var(--c-brand-deep); border-radius: 99px; padding: 8px 16px; }
 .ig__profile:hover .ig__follow { background: var(--c-brand-ink); }
 .ig__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; border-radius: var(--radius-m); overflow: hidden; }
-.ig__grid a { position: relative; display: block; aspect-ratio: 1; overflow: hidden; }
+.ig__grid a { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: #fff; }
 .ig__grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
 .ig__grid a:hover img { transform: scale(1.05); }
 .ig__badge { position: absolute; top: 6px; right: 6px; font-family: var(--font-en); font-size: 10px; letter-spacing: .12em; color: #fff; background: rgba(0,0,0,.45); border-radius: 4px; padding: 1px 6px; }
@@ -1028,3 +1028,107 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
   .ig__profile { padding: 16px 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .ig__grid img { transition: none; } }
+
+/* ===== 採用：データで見るEMIFULL ===== */
+.data-grid { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.data-tile { background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); padding: 16px; display: flex; flex-direction: column; }
+.data-tile dt { font-size: 13px; font-weight: 700; line-height: 1.5; }
+.data-tile dt .tag { display: table; margin-bottom: 8px; }
+.data-tile dd { margin: auto 0 0; padding-top: 10px; font-family: var(--font-en); font-weight: 400; font-size: 40px; line-height: 1.1; color: var(--c-brand-ink); font-variant-numeric: tabular-nums; }
+.data-tile dd small { font-family: var(--font-sans); font-size: 14px; color: var(--c-text); margin-left: 2px; }
+.data-tile__sub { margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--c-line); }
+.data-tile p { margin: 6px 0 0; font-size: 12px; color: var(--c-muted); line-height: 1.6; }
+.data-tile--key, .data-tile--wide { grid-column: 1 / -1; }
+.data-tile--key { background: var(--c-brand-deep); border-color: transparent; color: #fff; padding: 22px 20px; }
+.data-tile--key dt { font-size: 15px; }
+.data-tile--key dt .tag { background: #fff; }
+.data-tile--key dd, .data-tile--key dd small, .data-tile--key p { color: #fff; }
+.data-tile--key dd { font-size: 64px; }
+.data-tile--key p { font-size: 13px; opacity: .85; }
+
+/* ===== 採用：働きやすい制度（TOPのカード） ===== */
+.sys-grid { display: grid; gap: 14px; }
+.sys-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-l); padding: 20px; text-decoration: none; color: var(--c-text); transition: border-color .15s, transform .15s; }
+.sys-card:hover { border-color: var(--c-brand); transform: translateY(-2px); }
+.sys-card__worry { align-self: flex-start; font-size: 13px; background: var(--c-bloom-tint); color: #8a3d2e; padding: 6px 12px; border-radius: 12px 12px 12px 2px; }
+.sys-card h3 { margin: 14px 0 8px; font-size: 19px; }
+.sys-card ul, .check-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 14px; }
+.sys-card li { padding-left: 20px; position: relative; line-height: 1.7; }
+.sys-card li::before { content: "✓"; position: absolute; left: 0; color: var(--c-brand-ink); font-weight: 700; }
+.sys-card em { margin-top: auto; padding-top: 14px; font-style: normal; font-weight: 700; color: var(--c-brand-ink); font-size: 14px; }
+.sys-card em::after { content: " →"; }
+
+/* ===== 制度・働く環境（詳細ページ） ===== */
+.sys-block { display: grid; gap: 28px; }
+.sys-no { display: block; font-family: var(--font-en); font-size: 13px; letter-spacing: .2em; color: var(--c-brand-ink); }
+.sys-block__head .h-sec { margin-top: 4px; }
+.sys-block__head .lead { margin: 0; }
+.worry { display: inline-block; margin: 0 0 14px; font-weight: 700; font-size: 14px; background: #fff; border: 1px solid var(--c-line); border-radius: 14px 14px 14px 2px; padding: 8px 14px; }
+.worry::before { content: "よくある不安"; display: block; font-size: 11px; font-weight: 400; color: var(--c-muted); letter-spacing: .1em; }
+.sys-h { font-size: 17px; line-height: 1.5; margin: 36px 0 14px; padding-left: 12px; border-left: 3px solid var(--c-brand); }
+.sys-block__body > .sys-h:first-child { margin-top: 0; }
+.check-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.check-grid li { position: relative; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); padding: 14px 16px 14px 46px; font-size: 14px; line-height: 1.7; color: var(--c-muted); }
+.check-grid li::before { content: "✓"; position: absolute; left: 16px; top: 16px; width: 20px; height: 20px; border-radius: 50%; background: var(--c-brand-tint); color: var(--c-brand-ink); font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+.check-grid b { display: block; color: var(--c-text); font-size: 15px; }
+.tbl-wrap { overflow-x: auto; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); }
+.tbl { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 14px; }
+.tbl th, .tbl td { padding: 12px 14px; border-bottom: 1px solid var(--c-line); text-align: left; vertical-align: top; line-height: 1.7; }
+.tbl thead th { background: var(--c-brand-tint2); font-size: 12px; color: var(--c-muted); white-space: nowrap; }
+.tbl tbody th { white-space: nowrap; }
+.tbl tbody th small { display: block; font-weight: 400; font-size: 12px; color: var(--c-muted); }
+.tbl td { font-variant-numeric: tabular-nums; }
+.tbl tr:last-child th, .tbl tr:last-child td { border-bottom: 0; }
+.role-grid { display: grid; gap: 12px; }
+.role-card { background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); padding: 18px; }
+.role-card h3 { margin: 0; font-size: 17px; }
+.role-card__where { margin: 2px 0 10px; font-size: 12px; color: var(--c-muted); }
+.role-card ul { margin: 0; padding-left: 1.2em; font-size: 14px; line-height: 1.8; }
+
+@media (min-width: 768px) {
+  .data-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .data-tile--key { grid-column: span 2; grid-row: span 2; justify-content: center; padding: 28px; }
+  .data-tile--key dd { font-size: 96px; margin-top: 0; }
+  .data-tile--wide { grid-column: span 2; }
+  .sys-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .check-grid, .role-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1080px) {
+  .sys-grid { grid-template-columns: repeat(3, 1fr); }
+  .sys-block { grid-template-columns: 4fr 8fr; gap: 56px; align-items: start; }
+  .sys-block__head { position: sticky; top: calc(var(--header-h) + 84px); }
+}
+@media (prefers-reduced-motion: reduce) { .sys-card { transition: none; } .sys-card:hover { transform: none; } }
+
+/* ===== データ：時点表示・構成グラフ ===== */
+.data-asof { display: inline-block; font-size: 12px; font-weight: 700; color: var(--c-brand-ink); background: #fff; border: 1px solid var(--c-line); border-radius: 99px; padding: 3px 12px; margin-top: -8px; }
+.comp-grid { display: grid; gap: 12px; margin-top: 12px; }
+.comp { margin: 0; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); padding: 16px; }
+.comp figcaption { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+.comp__bar { display: flex; gap: 2px; height: 14px; }
+.comp__bar span { flex: var(--w) 1 0; background: var(--c); }
+.comp__bar span:first-child { border-radius: 4px 0 0 4px; }
+.comp__bar span:last-child { border-radius: 0 4px 4px 0; }
+.comp__bar span:hover { opacity: .8; }
+.comp__legend { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; color: var(--c-muted); }
+.comp__legend li { display: inline-flex; align-items: center; gap: 6px; }
+.comp__legend i { width: 10px; height: 10px; border-radius: 2px; background: var(--c); flex: none; }
+.comp__legend b { color: var(--c-text); font-family: var(--font-en); font-weight: 500; font-size: 13px; font-variant-numeric: tabular-nums; }
+.comp__legend b small { font-family: var(--font-sans); font-size: 10px; font-weight: 400; }
+
+/* ===== 制度ページ：年収モデルカード ===== */
+.salary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.salary { background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-m); padding: 14px; display: flex; flex-direction: column; }
+.salary p { margin: 0; }
+.salary__role { font-weight: 700; font-size: 15px; line-height: 1.5; }
+.salary__role small { display: block; font-weight: 400; font-size: 11px; color: var(--c-muted); }
+.salary__year { margin-top: auto !important; padding-top: 10px; font-family: var(--font-en); font-size: 32px; line-height: 1.1; color: var(--c-brand-ink); font-variant-numeric: tabular-nums; }
+.salary__year span { display: block; font-family: var(--font-sans); font-size: 11px; color: var(--c-muted); letter-spacing: .1em; }
+.salary__year small { font-family: var(--font-sans); font-size: 13px; color: var(--c-text); margin-left: 2px; }
+.salary__month { font-size: 12px; color: var(--c-muted); margin-top: 6px !important; padding-top: 6px; border-top: 1px dashed var(--c-line); }
+@media (min-width: 768px) {
+  .comp-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+  .salary-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .salary { padding: 18px; }
+  .salary__year { font-size: 38px; }
+}

@@ -93,7 +93,7 @@
 
   /* ---------------- Header / Drawer ---------------- */
   const corpNav = [["about.html", "EMIFULLについて", "ABOUT"], ["business.html", "事業案内", "BUSINESS"], ["business.html#locations", "グループマップ", "GROUP MAP"], ["index.html#news", "お知らせ", "NEWS"]];
-  const recNav = [["recruit.html#people", "人を知る", "PEOPLE"], ["recruit.html#work", "仕事を知る", "WORK"], ["recruit.html#system", "制度・働く環境", "SYSTEM"], ["jobs.html", "求人を探す", "JOBS"], ["recruit.html#faq", "採用Q&A", "FAQ"]];
+  const recNav = [["recruit.html#people", "人を知る", "PEOPLE"], ["recruit.html#work", "仕事を知る", "WORK"], ["system.html", "制度・働く環境", "SYSTEM"], ["jobs.html", "求人を探す", "JOBS"], ["recruit.html#faq", "採用Q&A", "FAQ"]];
   const nav = isRecruit ? recNav : corpNav;
   const header = $("#site-header");
   /* 法人サイト：浮遊ピル型ヘッダー＋ドロップダウン */
@@ -193,7 +193,7 @@
           <nav class="foot-cols" aria-label="サイトマップ">
             <div><h4>Corporate</h4><ul><li><a href="index.html">TOP</a></li><li><a href="about.html">EMIFULLについて</a></li><li><a href="about.html#message">理事長メッセージ</a></li><li><a href="about.html#outline">法人概要・沿革</a></li><li><a href="index.html#news">お知らせ</a></li><li><a href="contact.html">お問い合わせ</a></li></ul></div>
             <div><h4>Business</h4><ul><li><a href="business.html#gairai">外来・入院</a></li><li><a href="business.html#biyou">美容医療</a></li><li><a href="business.html#zaitaku">在宅医療</a></li><li><a href="business.html#kaigo">介護</a></li><li><a href="business.html#shogai">障がい福祉</a></li><li><a href="business.html#locations">グループマップ</a></li></ul></div>
-            <div><h4>Recruit</h4><ul><li><a href="recruit.html">採用情報</a></li><li><a href="recruit.html#work">部門・職種紹介</a></li><li><a href="interview.html">スタッフインタビュー</a></li><li><a href="recruit.html#system">成長できる環境</a></li><li><a href="recruit.html#system">選べる働き方</a></li><li><a href="recruit.html#faq">採用Q&amp;A</a></li></ul></div>
+            <div><h4>Recruit</h4><ul><li><a href="recruit.html">採用情報</a></li><li><a href="recruit.html#work">部門・職種紹介</a></li><li><a href="interview.html">スタッフインタビュー</a></li><li><a href="recruit.html#data">データで見るEMIFULL</a></li><li><a href="system.html">制度・働く環境</a></li><li><a href="recruit.html#faq">採用Q&amp;A</a></li></ul></div>
           </nav>
         </div>
         <div class="foot-sub"><a href="#">プライバシーポリシー</a><a href="#">応募者情報の取り扱い</a><a href="#">サイトのご利用について</a><a href="https://www.instagram.com/emifull1122/" target="_blank" rel="noopener">Instagram</a><a href="#">YouTube</a></div>
@@ -221,7 +221,7 @@
 
   /* ---------------- Mock bar ---------------- */
   const pages = [["grp", "法人サイト"], ["index.html", "法人TOP"], ["about.html", "EMIFULLについて（理事長・PMVV・概要）"], ["business.html", "事業案内・グループマップ"], ["facility.html", "施設詳細"], ["contact.html", "お問い合わせ"],
-    ["grp", "採用サイト"], ["recruit.html", "採用TOP"], ["jobs.html", "求人一覧（検索）"], ["job.html?id=j01", "求人詳細"], ["interview.html", "職員インタビュー"]];
+    ["grp", "採用サイト"], ["recruit.html", "採用TOP"], ["jobs.html", "求人一覧（検索）"], ["job.html?id=j01", "求人詳細"], ["interview.html", "職員インタビュー"], ["system.html", "制度・働く環境"]];
   const bar = document.createElement("div");
   bar.className = "mock-bar";
   const cur = location.pathname.split("/").pop() || "index.html";
