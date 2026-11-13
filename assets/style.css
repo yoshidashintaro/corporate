@@ -983,3 +983,23 @@ body[data-site="corp"] .drawer { inset: 0; padding-top: 84px; z-index: 48; }
   .lm-bar::after { content: none; }
   .lm-bar:hover { transform: none; }
 }
+
+/* ===== インタビュー：本人プロフィール・コメント・動画 ===== */
+.voice { margin: 48px 0 0; }
+.voice__card { margin-top: 16px; background: #fff; border: 1px solid var(--c-line); border-radius: var(--radius-l); padding: 22px 20px; display: grid; gap: 20px; }
+.voice__who { display: flex; align-items: center; gap: 16px; }
+.voice__photo { flex: none; width: 88px; height: 88px; border-radius: 50%; object-fit: cover; }
+.voice__meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 13px; align-items: baseline; }
+.voice__meta dt { font-size: 11px; color: var(--c-muted); letter-spacing: .1em; border: 1px solid var(--c-line); border-radius: 99px; padding: 0 8px; text-align: center; }
+.voice__meta dd { margin: 0; }
+.voice__name { font-size: 20px; font-weight: 700; letter-spacing: .12em; }
+.voice__name small { display: block; font-family: var(--font-en); font-weight: 400; font-size: 11px; letter-spacing: .14em; color: var(--c-muted); }
+.voice__comment { position: relative; margin: 0; padding: 18px 18px 4px 22px; background: var(--c-bg); border-radius: var(--radius-m, 14px); font-size: 15px; line-height: 2; }
+.voice__comment::before { content: "“"; position: absolute; left: 10px; top: -14px; font-family: var(--font-script); font-size: 56px; line-height: 1; color: var(--w-aqua); }
+.voice__comment p { margin: 0 0 14px; }
+@media (min-width: 768px) {
+  .voice__card { grid-template-columns: 1fr 1fr; padding: 32px; gap: 24px 32px; }
+  .voice__who { grid-column: 1 / -1; }
+  .voice__photo { width: 104px; height: 104px; }
+  .voice__video { align-self: start; }
+}
